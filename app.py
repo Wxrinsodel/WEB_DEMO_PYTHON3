@@ -22,7 +22,7 @@ FUNCTIONS = {
     'exp': np.exp
 }
 
-#
+
 COLORS = {
     'blue': '#1f77b4',
     'red': '#d62728',
@@ -35,6 +35,7 @@ COLORS = {
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/plot', methods=['GET', 'POST'])
 def plot():
@@ -107,6 +108,8 @@ def plot():
     return render_template('plotter.html',
                          functions=list(FUNCTIONS.keys()),
                          colors=list(COLORS.keys()))
+
+
 def create_single_plot(x_from, x_to, selected_functions, selected_colors, plot_path):
     plt.switch_backend('Agg') 
     x = np.linspace(x_from, x_to, 500)
@@ -126,6 +129,7 @@ def create_single_plot(x_from, x_to, selected_functions, selected_colors, plot_p
         plt.savefig(plot_path)
     finally:
         plt.close('all')  
+
 
 def create_multiple_plots(x_from, x_to, selected_functions, selected_colors):
     plt.switch_backend('Agg') 
@@ -153,6 +157,7 @@ def create_multiple_plots(x_from, x_to, selected_functions, selected_colors):
             plot_files.append(plot_filename)
     finally:
         plt.close('all') 
+    
     
     return plot_files
 
