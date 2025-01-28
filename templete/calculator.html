@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Square of number</title>
+</head>
+<body>
+    <h1><strong>Calculate square of number</strong></h1>
+    <form action="/calculate" method="post">
+        <label for="number">Enter number:</label>
+        <input type="number" id="number" name="number" required>
+        <button type="submit">Calculate</button>
+    </form>
+    {% if result %}
+    <h2>Result: {{ result }}</h2>
+    <a href="/">Back to main page</a>
+    {% endif %}
+
+    <p></p>
+    <div style="width: 200px">
+        <img src="static/images/test.webp" width="200">
+    </div>
+</body>
+</html>

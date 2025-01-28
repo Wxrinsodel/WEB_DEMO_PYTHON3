@@ -1,0 +1,22 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plotting</title>
+</head>
+<body>
+    <h1><strong>Set the interval to plot</strong></h1>
+    <form action="/plot" method="POST">
+        <label for="from_num">From:</label>
+        <input type="number" id="from_num" name="xleft" required>
+        <label for="to_num">To:</label>
+        <input type="number" id="to_num" name="xright" required>
+        <button type="submit">Plot</button>
+    </form>
+    {% if image_path %}
+        <div style="width: 200px">
+            <img src="{{ image_path }}" width="200">
+        </div>
+    {% endif %}
+</body>
+</html>
