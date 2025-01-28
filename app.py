@@ -29,7 +29,7 @@ COLORS = {
     'green': '#2ca02c',
     'purple': '#9467bd',
     'orange': '#ff7f0e',
-    'pink':'##ffa1e5'
+    'pink':'#FFC0CB'
 }
 
 @app.route('/')
@@ -46,11 +46,18 @@ def plot():
             x_from = float(request.form['x_from'])
             x_to = float(request.form['x_to'])
             
-            selected_functions = [v for k, v in request.form.items() if k.startswith('functions')]
-            selected_colors = [v for k, v in request.form.items() if k.startswith('colors')]
+            selected_functions = [
+                v for k, v in request.form.items() if k.startswith('functions')
+            ]
+
+            selected_colors = [
+                request.form[f"colors[{i}]"]
+            for i, _ in enumerate(request.form.keys())
+            if f"functions[{i}]" in request.form
+            ]
 
             print("Parsed functions:", selected_functions)
-            print("Parsed colors:", selected_colors)
+            print("Aligned colors:", selected_colors)
             
             if not selected_functions:
                 return render_template('plotter.html',
